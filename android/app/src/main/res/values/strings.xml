@@ -972,4 +972,10 @@
     <string name="navigate_track_finish">Track Finish</string>
     <!-- Error when the selected connected track section has no geometry left in the requested direction. -->
     <string name="track_no_remaining_geometry">No track remains in this direction. Select another point.</string>
+
+    <!-- SECTION: Accessibility -->
+    <!-- Accessibility label for removing an unnamed route point; %d is its position including start and destination, beginning at 1. -->
+    <string name="route_point_delete">Delete route point %d</string>
+    <!-- Accessibility label for removing a route point; %1$d is its position beginning at 1, %2$s is its localized place name. -->
+    <string name="route_point_delete_named">Delete route point %1$d: %2$s</string>
 </resources>
