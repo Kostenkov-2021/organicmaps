@@ -80,7 +80,10 @@ public class ManageRouteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                             row.getResources().getDimensionPixelSize(R.dimen.margin_half_plus),
                             row.getResources().getDimensionPixelSize(R.dimen.margin_half));
     row.setTouchDelegate(touchDelegate);
-    return new ManageRouteViewHolder(row);
+    final ManageRouteViewHolder holder = new ManageRouteViewHolder(row);
+    RoutePointDeletionAccessibility.attach(holder.mImageViewDelete, holder::getBindingAdapterPosition,
+                                           holder.mTextViewTitle::getText);
+    return holder;
   }
 
   @Override
@@ -178,6 +181,9 @@ public class ManageRouteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
       title = point.mIsMyPosition ? mContext.getString(app.organicmaps.sdk.R.string.core_my_position) : point.mTitle;
     }
     pointHolder.mTextViewTitle.setText(title);
+    pointHolder.mImageViewDelete.setContentDescription(
+        TextUtils.isEmpty(title) ? mContext.getString(R.string.route_point_delete, position + 1)
+                                 : mContext.getString(R.string.route_point_delete_named, position + 1, title));
     final int titleColorAttr = isPlaceholder ? android.R.attr.textColorSecondary : android.R.attr.textColorPrimary;
     pointHolder.mTextViewTitle.setTextColor(ThemeUtils.getColor(mContext, titleColorAttr));
 

@@ -1,0 +1,13 @@
+[[Accessibility]]
+
+[route_point_delete]
+  comment = Accessibility label for removing an unnamed route point; %d is its position including start and destination, beginning at 1.
+  tags = android-app
+  en = Delete route point %d
+  ru = Удалить точку маршрута %d
+
+[route_point_delete_named]
+  comment = Accessibility label for removing a route point; %1$d is its position beginning at 1, %2$s is its localized place name.
+  tags = android-app
+  en = Delete route point %1$d: %2$s
+  ru = Удалить точку маршрута %1$d: %2$s
