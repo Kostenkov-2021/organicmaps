@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.organicmaps.R;
 import app.organicmaps.sdk.search.SearchRecents;
 import app.organicmaps.util.Graphics;
+import app.organicmaps.widget.ButtonAccessibility;
 import app.organicmaps.widget.SearchToolbarController;
 
 class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder>
@@ -70,6 +71,8 @@ class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.Vie
   {
     if (getItemViewType(position) == TYPE_ITEM)
       viewHolder.mText.setText(SearchRecents.get(position));
+    else
+      ButtonAccessibility.attach(viewHolder.mText);
   }
 
   @Override

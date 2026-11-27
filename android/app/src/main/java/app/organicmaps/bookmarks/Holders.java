@@ -29,6 +29,7 @@ import app.organicmaps.sdk.bookmarks.data.Track;
 import app.organicmaps.util.UiUtils;
 import app.organicmaps.util.Utils;
 import app.organicmaps.utils.Graphics;
+import app.organicmaps.widget.ButtonAccessibility;
 import app.organicmaps.widget.recycler.DividerBehavior;
 import app.organicmaps.widget.recycler.RecyclerClickListener;
 import app.organicmaps.widget.recycler.RecyclerLongClickListener;
@@ -132,6 +133,7 @@ public class Holders
     {
       super(itemView);
       mButton = itemView.findViewById(R.id.button);
+      ButtonAccessibility.attach(mButton);
       mText = itemView.findViewById(R.id.text_message);
     }
 

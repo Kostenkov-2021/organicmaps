@@ -69,12 +69,15 @@ public class StackedButtonsDialog extends AppCompatDialog implements View.OnClic
     TextView message = findViewById(R.id.tv__message);
     UiUtils.setTextAndHideIfEmpty(message, mMessage);
     TextView positive = findViewById(R.id.btn__positive);
+    ButtonAccessibility.attach(positive);
     positive.setOnClickListener(this);
     UiUtils.setTextAndHideIfEmpty(positive, mPositive);
     TextView neutral = findViewById(R.id.btn__neutral);
+    ButtonAccessibility.attach(neutral);
     neutral.setOnClickListener(this);
     UiUtils.setTextAndHideIfEmpty(neutral, mNeutral);
     TextView negative = findViewById(R.id.btn__negative);
+    ButtonAccessibility.attach(negative);
     negative.setOnClickListener(this);
     UiUtils.setTextAndHideIfEmpty(negative, mNegative);
   }
