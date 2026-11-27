@@ -561,12 +561,15 @@ public class Holders
     private final TextView mTitle;
     @NonNull
     private final TextView mDescText;
+    private final BookmarkDescriptionAccessibility mDescriptionAccessibility;
 
     DescriptionViewHolder(@NonNull View itemView, @NonNull BookmarkCategory category)
     {
       super(itemView);
       mDescText = itemView.findViewById(R.id.text);
       mTitle = itemView.findViewById(R.id.title);
+      mDescriptionAccessibility =
+          new BookmarkDescriptionAccessibility(itemView, mTitle, mDescText, itemView.findViewById(R.id.more_btn));
     }
 
     @Override
@@ -585,6 +588,7 @@ public class Holders
       mDescText.setText(spannedDesc);
 
       UiUtils.showIf(!TextUtils.isEmpty(spannedDesc), mDescText);
+      mDescriptionAccessibility.bind();
     }
   }
 }

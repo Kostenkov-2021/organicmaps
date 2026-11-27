@@ -490,14 +490,7 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
       break;
     case TYPE_DESC:
       View desc = inflater.inflate(R.layout.item_category_description, parent, false);
-      TextView moreBtn = desc.findViewById(R.id.more_btn);
-      TextView text = desc.findViewById(R.id.text);
-      TextView title = desc.findViewById(R.id.title);
-      setMoreButtonVisibility(text, moreBtn);
       holder = new Holders.DescriptionViewHolder(desc, mSectionsDataSource.getCategory());
-      text.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
-      moreBtn.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
-      title.setOnClickListener(v -> onMoreButtonClicked(text, moreBtn));
       break;
     }
 
@@ -726,41 +719,5 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<Holders.BaseBookma
         throw new RuntimeException("Bookmark no longer exists " + bookmarkId);
       return info;
     }
-  }
-
-  private void setMoreButtonVisibility(TextView text, TextView moreBtn)
-  {
-    text.post(() -> setShortModeDescription(text, moreBtn));
-  }
-
-  private void onMoreButtonClicked(TextView textView, TextView moreBtn)
-  {
-    if (isShortModeDescription(textView))
-    {
-      setExpandedModeDescription(textView, moreBtn);
-    }
-    else
-    {
-      setShortModeDescription(textView, moreBtn);
-    }
-  }
-
-  private boolean isShortModeDescription(TextView text)
-  {
-    return text.getMaxLines() == MAX_VISIBLE_LINES;
-  }
-
-  private void setExpandedModeDescription(TextView textView, TextView moreBtn)
-  {
-    textView.setMaxLines(Integer.MAX_VALUE);
-    moreBtn.setVisibility(View.GONE);
-  }
-
-  private void setShortModeDescription(TextView textView, TextView moreBtn)
-  {
-    textView.setMaxLines(MAX_VISIBLE_LINES);
-
-    boolean isDescriptionTooLong = textView.getLineCount() > MAX_VISIBLE_LINES;
-    moreBtn.setVisibility(isDescriptionTooLong ? View.VISIBLE : View.GONE);
   }
 }
